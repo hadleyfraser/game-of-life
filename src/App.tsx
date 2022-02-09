@@ -1,3 +1,6 @@
+import deepcopy from "deepcopy";
+import { useState } from "react";
+
 import { GameBoard } from "./components/GameBoard/GameBoard";
 import { createBoard } from "./utils/createBoard";
 
@@ -7,8 +10,16 @@ const SIZE = {
 };
 
 function App() {
-  const board = createBoard(SIZE.height, SIZE.width);
-  return <GameBoard board={board} />;
+  const [board, setBoard] = useState(createBoard(SIZE.height, SIZE.width));
+
+  const onCellClick = (row: number, col: number) => {
+    const newBoard = deepcopy(board);
+    newBoard[row][col] = !newBoard[row][col];
+
+    setBoard(newBoard);
+  };
+
+  return <GameBoard board={board} onCellClick={onCellClick} />;
 }
 
 export default App;
