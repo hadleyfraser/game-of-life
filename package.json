@@ -1,5 +1,7 @@
 {
   "name": "game-of-life",
+  "description": "Conway's Game of Life",
+  "author": "Hadley Fraser <hadleyfraser@gmail.com>",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
